@@ -1,0 +1,28 @@
+.task {
+    padding: 1.5rem;
+    margin: 2rem 0 0 0;
+}
+
+.header {
+    margin: 0 0 0.3rem 0;
+    padding: 0;
+}
+.body {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0;
+    padding: 1rem;
+}
+
+.btn_delete,
+.btn_edit {
+    cursor: pointer;
+    color: #61dafb;
+    padding: 0 0.3rem;
+    margin: 0 0.5rem;
+}
+
+.btn_delete:hover,
+.btn_edit:hover {
+    color: #09d3ac;
+}
