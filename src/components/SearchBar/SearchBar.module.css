@@ -1,0 +1,33 @@
+.searchbar {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+}
+
+@media screen and (min-width: 650px) {
+    .searchbar {
+        flex-direction: row;
+        font-size: 1.5rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.headline {
+    font-size: inherit;
+    margin: 1rem 1rem 1rem 0;
+}
+
+.searchbar_input {
+    display: block;
+    font-size: inherit;
+    width: 100%;
+    height: fit-content;
+    padding: 0.2rem;
+}
+
+@media screen and (min-width: 650px) {
+    .searchbar_input {
+        max-width: 18rem;
+    }
+}
