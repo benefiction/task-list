@@ -19,7 +19,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## TO:DO
 
--   [ ] implement editing functionality
 -   [ ] add remaining test
 -   [ ] replace static strings by translation file
 -   [ ] replace css values by vars

@@ -4,12 +4,17 @@ import { TaskData } from '../Task/Task.types';
 import { TaskForm } from './TaskForm';
 
 export const TaskFormContainer: React.FC = () => {
-    const { tasks, setTasks } = useContext(TasksContext);
+    const { tasks, setTasks, editTask } = useContext(TasksContext);
 
     const onSaveTask = (task: TaskData) => {
         const newTasks = { ...tasks, [task.id]: task };
         setTasks(newTasks);
     };
 
-    return <TaskForm onSaveTask={onSaveTask} />;
+    return (
+        <TaskForm
+            onSaveTask={onSaveTask}
+            prefilledTask={editTask ? tasks?.[editTask] : undefined}
+        />
+    );
 };

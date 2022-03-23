@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './TaskForm.module.css';
 import { TaskFormProps } from './TaskForm.types';
 
-export const TaskForm: React.FC<TaskFormProps> = ({ onSaveTask }) => {
+export const TaskForm: React.FC<TaskFormProps> = ({
+    onSaveTask,
+    prefilledTask,
+}) => {
     const todayDate = new Date().toISOString().slice(0, 10);
 
     const [dueDate, setDueDate] = useState(todayDate);
@@ -10,10 +13,16 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSaveTask }) => {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
 
+    useEffect(() => {
+        setTitle(prefilledTask?.title || '');
+        setDescription(prefilledTask?.description || '');
+        setDueDate(prefilledTask?.dueDate || todayDate);
+    }, [prefilledTask]);
+
     const onSubmit = (e: React.MouseEvent) => {
         e.preventDefault();
         onSaveTask({
-            id: Date.now().toString(),
+            id: prefilledTask?.id ?? Date.now().toString(),
             title,
             description,
             dueDate,
@@ -27,7 +36,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSaveTask }) => {
 
     return (
         <div className={style.formwrapper}>
-            <h2 className={style.header}>Add a new tasks here:</h2>
+            <h2 className={style.header}>
+                {prefilledTask ? 'Update the ' : 'Add a new '}tasks here:
+            </h2>
             <form name='taskform'>
                 <input
                     className={style.title}
@@ -67,7 +78,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSaveTask }) => {
                             title === '' || description === '' ? true : false
                         }
                     >
-                        Create New Task
+                        {prefilledTask ? 'Update Task' : 'Create New Task'}
                     </button>
                 </div>
             </form>

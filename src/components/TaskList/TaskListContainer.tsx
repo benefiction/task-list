@@ -15,7 +15,7 @@ const fallbackTasks: { [key: string]: TaskData } = {
 };
 
 export const TaskListContainer: React.FC = () => {
-    const { tasks, setTasks } = useContext(TasksContext);
+    const { tasks, setTasks, setEditTask } = useContext(TasksContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [displayedTasks, setDisplayedTasks] = useState<TaskData[]>([]);
 
@@ -33,10 +33,20 @@ export const TaskListContainer: React.FC = () => {
         setTasks(newTasks);
     };
 
+    const onEdit = (id: string) => {
+        setEditTask(id);
+        const element = document.getElementById('root');
+        element && element.scrollIntoView(false);
+    };
+
     return (
         <>
             <SearchBar onSearch={setSearchTerm} />
-            <TaskList tasks={displayedTasks} onDelete={onDelete} />
+            <TaskList
+                tasks={displayedTasks}
+                onDelete={onDelete}
+                onEdit={onEdit}
+            />
         </>
     );
 };

@@ -11,4 +11,6 @@ type Tasks = {
 export interface ITasksContext {
     setTasks: (arg: Tasks) => void;
     tasks: Tasks | null;
+    setEditTask: (arg: string) => void;
+    editTask: string | null;
 }

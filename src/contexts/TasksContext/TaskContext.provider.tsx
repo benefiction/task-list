@@ -4,6 +4,7 @@ import { TasksContext } from './TasksContext';
 
 export const TasksProvider: React.FC = ({ children }) => {
     const [tasks, setTasks] = React.useState<ITasksContext['tasks']>(null);
+    const [editTask, setEditTask] = React.useState<string | null>(null);
 
     useEffect(() => {
         const taskFromStorage = localStorage.getItem('TASKS_FOR_BV');
@@ -16,14 +17,17 @@ export const TasksProvider: React.FC = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem('TASKS_FOR_BV', JSON.stringify(tasks));
+        setEditTask(null);
     }, [tasks]);
 
     const providerValue: ITasksContext = useMemo(() => {
         return {
             setTasks,
             tasks,
+            setEditTask,
+            editTask,
         };
-    }, [tasks]);
+    }, [tasks, editTask]);
 
     return (
         <TasksContext.Provider value={providerValue}>
