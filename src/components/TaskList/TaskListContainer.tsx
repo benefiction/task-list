@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { TasksContext } from '../../contexts/TasksContext';
 import { SearchBar } from '../SearchBar';
 import { TaskData } from '../Task/Task.types';
+import { useDeleteTask, useEditTask } from './hooks';
 import { TaskList } from './TaskList';
 
 const initialTasks: { [key: string]: TaskData } = {
@@ -15,7 +16,7 @@ const initialTasks: { [key: string]: TaskData } = {
 };
 
 export const TaskListContainer: React.FC = () => {
-    const { tasks, setTasks, setEditTask } = useContext(TasksContext);
+    const { tasks } = useContext(TasksContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [displayedTasks, setDisplayedTasks] = useState<TaskData[]>([]);
 
@@ -27,17 +28,8 @@ export const TaskListContainer: React.FC = () => {
         setDisplayedTasks(taskToDisplay);
     }, [tasks, searchTerm]);
 
-    const onDelete = (id: string) => {
-        const newTasks = { ...tasks };
-        delete newTasks[id];
-        setTasks(newTasks);
-    };
-
-    const onEdit = (id: string) => {
-        setEditTask(id);
-        const element = document.getElementById('root');
-        element && element.scrollIntoView(false);
-    };
+    const onDelete = useDeleteTask();
+    const onEdit = useEditTask();
 
     return (
         <>

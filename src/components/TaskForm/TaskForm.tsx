@@ -17,7 +17,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
         setTitle(prefilledTask?.title || '');
         setDescription(prefilledTask?.description || '');
         setDueDate(prefilledTask?.dueDate || todayDate);
-    }, [prefilledTask]);
+    }, [prefilledTask, todayDate]);
 
     const onSubmit = (e: React.MouseEvent) => {
         e.preventDefault();
