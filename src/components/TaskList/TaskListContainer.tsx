@@ -4,7 +4,7 @@ import { SearchBar } from '../SearchBar';
 import { TaskData } from '../Task/Task.types';
 import { TaskList } from './TaskList';
 
-const fallbackTasks: { [key: string]: TaskData } = {
+const initialTasks: { [key: string]: TaskData } = {
     '1': {
         id: '1',
         title: 'No Task So Far',
@@ -21,9 +21,9 @@ export const TaskListContainer: React.FC = () => {
 
     useEffect(() => {
         const searchRegExp = new RegExp(searchTerm, 'i');
-        const taskToDisplay = Object.values(tasks || fallbackTasks).filter(
-            (task) => task.title.search(searchRegExp) !== -1
-        );
+        const taskToDisplay = Object.values(
+            tasks && Object.keys(tasks).length ? tasks : initialTasks
+        ).filter((task) => task.title.search(searchRegExp) !== -1);
         setDisplayedTasks(taskToDisplay);
     }, [tasks, searchTerm]);
 
