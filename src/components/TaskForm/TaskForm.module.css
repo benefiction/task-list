@@ -19,6 +19,7 @@
     box-sizing: border-box;
     margin: 0 0 0.5rem 0;
     border-radius: 3px;
+    min-height: 70px;
 }
 
 .bottom_bar {
@@ -34,4 +35,31 @@
 .submit {
     font-size: 1rem;
     border-radius: 3px;
+    position: relative;
+}
+
+.submit[disabled]::after,
+.submit[disabled]::before {
+    position: absolute;
+    display: block;
+    bottom: 100%;
+    left: 50%;
+}
+
+.submit[disabled]:hover::before {
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    border-color: #61dafb transparent transparent transparent;
+    transform: translateY(10px) translateX(-50%);
+}
+
+.submit[disabled]:hover::after {
+    content: attr(data-text);
+    background-color: #61dafb;
+    transform: translateY(-10px) translateX(-50%);
+    padding: 0.3rem;
+    border-radius: 5px;
+    min-width: 9rem;
+    color: #000;
 }

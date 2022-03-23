@@ -7,8 +7,8 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSaveTask }) => {
 
     const [dueDate, setDueDate] = useState(todayDate);
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [title, setTitle] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
 
     const onSubmit = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -62,6 +62,10 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSaveTask }) => {
                         type='submit'
                         onClick={onSubmit}
                         className={style.submit}
+                        data-text='Title and description are required'
+                        disabled={
+                            title === '' || description === '' ? true : false
+                        }
                     >
                         Create New Task
                     </button>

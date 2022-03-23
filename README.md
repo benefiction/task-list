@@ -1,6 +1,5 @@
 # Getting Started with the Task List
 
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -20,9 +19,9 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## TO:DO
 
-- [ ] implement editing functionality
-- [ ] add remaining test
-- [ ] error handling and input validation for new tasks
-- [ ] replace static strings by translation file
-- [ ] replace css values by vars
-- [ ] add reset css
+-   [ ] implement editing functionality
+-   [ ] add remaining test
+-   [ ] replace static strings by translation file
+-   [ ] replace css values by vars
+-   [ ] add reset css
+-   [ ] error handling (eg. locale storage issue)
