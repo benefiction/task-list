@@ -20,8 +20,9 @@ export const TaskListContainer: React.FC = () => {
     const [displayedTasks, setDisplayedTasks] = useState<TaskData[]>([]);
 
     useEffect(() => {
+        const searchRegExp = new RegExp(searchTerm, 'i');
         const taskToDisplay = Object.values(tasks || fallbackTasks).filter(
-            (task) => task.title.search(searchTerm) !== -1
+            (task) => task.title.search(searchRegExp) !== -1
         );
         setDisplayedTasks(taskToDisplay);
     }, [tasks, searchTerm]);
