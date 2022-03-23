@@ -30,7 +30,7 @@ describe('<Task >', () => {
 
     it('should render the dueDate', () => {
         render(<Task task={mockTask} onDelete={() => {}} />);
-        const dueDateElement = screen.getByText(dueDate);
+        const dueDateElement = screen.getByText(`Due date: ${dueDate}`);
         expect(dueDateElement).toBeInTheDocument();
     });
 

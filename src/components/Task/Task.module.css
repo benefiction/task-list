@@ -14,6 +14,17 @@
     padding: 1rem;
 }
 
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+.footer_group {
+    margin: 0.5rem 0 0 0;
+    padding: 0;
+}
+
 .btn_delete,
 .btn_edit {
     cursor: pointer;
