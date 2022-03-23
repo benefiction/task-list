@@ -1,0 +1,37 @@
+.formwrapper {
+    display: block;
+    border-top: 1px solid #ccc;
+    padding: 3rem 0 0 0;
+    margin: 3rem 0 0 0;
+}
+
+.title {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 0.5rem 0;
+    border-radius: 3px;
+}
+
+.description {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 0.5rem 0;
+    border-radius: 3px;
+}
+
+.bottom_bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.due_date_input {
+    display: inline-block;
+    margin: 0 0 0 0.3rem;
+}
+
+.submit {
+    font-size: 1rem;
+    border-radius: 3px;
+}
